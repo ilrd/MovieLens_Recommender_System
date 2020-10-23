@@ -63,6 +63,7 @@ fit_callbacks = [
         patience=3,
         verbose=1,
         min_lr=0.000001,
+        min_delta=0.0005,
     ),
     callbacks.ModelCheckpoint(
         'chechpoints/model_checkpoint.h5',
