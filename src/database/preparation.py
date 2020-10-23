@@ -7,10 +7,8 @@ os.chdir('/home/ilolio/PycharmProjects/Recommender_System-MovieLens/src/database
 
 
 def get_ratings_df(rows=None):
-    # username = input('Username: ')
-    # password = getpass.getpass(prompt='Password: ')
-    username = 'ilolio'
-    password = 'RthD&Ngu1'
+    username = input('Username: ')
+    password = getpass.getpass(prompt='Password: ')
 
     engine = sqlalchemy.create_engine(f"mysql+pymysql://{username}:{password}@localhost/MovieLens")
     if rows:

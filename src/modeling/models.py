@@ -16,12 +16,6 @@ datagen = get_ratings_df(rows=20_001_000)
 
 df = pd.concat(list(datagen))
 
-df['userId'] = pd.Categorical(df['userId'])
-df['userId'] = df['userId'].cat.codes
-
-df['movieId'] = pd.Categorical(df['movieId'])
-df['movieId'] = df['movieId'].cat.codes
-
 user_ids = df['userId'].values
 movie_ids = df['movieId'].values
 ratings = df['rating'].values
