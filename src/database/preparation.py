@@ -1,20 +1,23 @@
 import pandas as pd
 import sqlalchemy
-import matplotlib.pyplot as plt
 import getpass
 import os
 
 os.chdir('/home/ilolio/PycharmProjects/Recommender_System-MovieLens/src/database')
 
-username = input('Username: ')
-password = getpass.getpass(prompt='Password: ')
 
-engine = sqlalchemy.create_engine(f"mysql+pymysql://{username}:{password}@localhost/MovieLens")
+def get_ratings_df(rows=None):
+    # username = input('Username: ')
+    # password = getpass.getpass(prompt='Password: ')
+    username = 'ilolio'
+    password = 'RthD&Ngu1'
 
-query = "SELECT * FROM Ratings LIMIT 10000;"
+    engine = sqlalchemy.create_engine(f"mysql+pymysql://{username}:{password}@localhost/MovieLens")
+    if rows:
+        query = f"SELECT * FROM Ratings LIMIT {rows};"
+    else:
+        query = "SELECT * FROM Ratings;"
 
-print(f"Reading rating.csv...\n")
-ratings_df = pd.read_sql(query, engine, chunksize=10000)
-print(f"rating.csv successfully saved to ratings_df!\n")
+    ratings_df = pd.read_sql(query, engine, chunksize=10000)
 
-next(ratings_df)
+    return ratings_df
