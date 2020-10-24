@@ -1,4 +1,3 @@
-import os
 from database.preparation import get_ratings_df
 import numpy as np
 import tensorflow as tf
@@ -9,8 +8,6 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import matplotlib.pyplot as plt
 from tensorflow.keras import callbacks
-
-os.chdir('/home/ilolio/PycharmProjects/Recommender_System-MovieLens/src/database')
 
 datagen = get_ratings_df(rows=20_001_000)
 
@@ -63,7 +60,7 @@ fit_callbacks = [
         patience=3,
         verbose=1,
         min_lr=0.000001,
-        min_delta=0.0005,
+        min_delta=0.0003,
     ),
     callbacks.ModelCheckpoint(
         'chechpoints/model_checkpoint.h5',
@@ -72,10 +69,15 @@ fit_callbacks = [
         save_best_only=True,
     ),
 ]
-history = model.fit([train_user, train_movie], train_ratings, batch_size=3072, epochs=18,
+history = model.fit([train_user, train_movie], train_ratings, batch_size=3072, epochs=25,
                     validation_data=([test_user, test_movie], test_ratings), callbacks=fit_callbacks)
 
 plt.plot(history.history['loss'], label='loss')
 plt.plot(history.history['val_loss'], label='val_loss')
 
-model.save('10epochs_model.h5')
+# model.save('25epochs_model.h5')
+
+model = keras.models.load_model('25epochs_model.h5')
+
+model.evaluate([test_user, test_movie], test_ratings, batch_size=3072)  # mae - 0.6109
+

@@ -1,9 +1,6 @@
 import pandas as pd
 import sqlalchemy
 import getpass
-import os
-
-os.chdir('/home/ilolio/PycharmProjects/Recommender_System-MovieLens/src/database')
 
 username = input('Username: ')
 password = getpass.getpass(prompt='Password: ')
@@ -21,7 +18,7 @@ ratings_df['movieId'] = pd.Categorical(ratings_df['movieId'])
 ratings_df['movieId'] = ratings_df['movieId'].cat.codes
 
 # Save to sql table
-table = 'RatingsTest'
+table = 'Ratings'
 print(f"Saving ratings_df to sql table {table}...\n")
-ratings_df.iloc[:100].to_sql(table, con=engine, index=False, chunksize=10000, if_exists='replace')
+ratings_df.to_sql(table, con=engine, index=False, chunksize=10000, if_exists='replace')
 print("Saved!")

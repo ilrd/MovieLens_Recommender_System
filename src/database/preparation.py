@@ -1,9 +1,6 @@
 import pandas as pd
 import sqlalchemy
 import getpass
-import os
-
-os.chdir('/home/ilolio/PycharmProjects/Recommender_System-MovieLens/src/database')
 
 
 def get_ratings_df(rows=None):
