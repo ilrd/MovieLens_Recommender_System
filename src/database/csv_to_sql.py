@@ -1,9 +1,10 @@
 import pandas as pd
 import sqlalchemy
-import getpass
 
-username = input('Username: ')
-password = getpass.getpass(prompt='Password: ')
+f = open('../../sql_credentials')
+username = f.readline()[:-1]
+password = f.readline()
+f.close()
 
 engine = sqlalchemy.create_engine(f"mysql+pymysql://{username}:{password}@localhost/MovieLens")
 
