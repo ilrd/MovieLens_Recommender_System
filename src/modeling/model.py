@@ -75,7 +75,7 @@ def train(model, train_data, test_data):
             min_delta=0.0003,
         ),
         callbacks.ModelCheckpoint(
-            'chechpoints/model_checkpoint.h5',
+            'modeling/checkpoints/model_checkpoint.h5',
             monitor='val_loss',
             verbose=0,
             save_best_only=True,

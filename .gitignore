@@ -11,4 +11,4 @@ data/
 sql_credentials
 
 # Model training checkpoints
-src/modeling/chechpoints/
+src/modeling/checkpoints/
