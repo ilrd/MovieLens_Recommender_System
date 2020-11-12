@@ -31,9 +31,9 @@ def load_center_data(rows=None, build=False):
         N = np.unique(user_ids).shape[0]
         M = np.unique(movie_ids).shape[0]
 
-        return ([train_user, train_movie], train_ratings), ([train_user, train_movie], train_ratings), N, M
+        return ([train_user, train_movie], train_ratings), ([test_user, test_movie], test_ratings), N, M
 
-    return ([train_user, train_movie], train_ratings), ([train_user, train_movie], train_ratings)
+    return ([train_user, train_movie], train_ratings), ([test_user, test_movie], test_ratings)
 
 
 def build_model(N, M):
@@ -92,8 +92,11 @@ def train(model, train_data, test_data):
     # model.save('25epochs_model.h5')
 
 
-model = keras.models.load_model('25epochs_model.h5')
+train_data, test_data, N, M = load_center_data(build=True)
+model = build_model(N, M)
 
-train_data, test_data = load_center_data(rows=20_000)
+train(model, train_data, train_data)
 
-model.evaluate(test_data[0], test_data[1], batch_size=3072)  # mae - 0.6109
+# Testing
+# model = keras.models.load_model('25epochs_model.h5')
+# model.evaluate(test_data[0], test_data[1], batch_size=3072)  # mae - 0.6109
