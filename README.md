@@ -9,6 +9,7 @@ users' ratings of the movies.
 * Working with data - Pandas, SQL
 * Visualization - matplotlib
 * Modeling - keras, embedding, sklearn
+* Collaborative filtering
 
 ## Result
 The model makes movie recommendations to users with 0.6 mean absolute error, which is pretty good for predicting 
