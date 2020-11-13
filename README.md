@@ -1,5 +1,6 @@
 # Recommender System MovieLens
 
+<img align="right" vspace="5" hspace="5" src="./img/logo.jpeg" width="150">
 Implementation of a movie recommender system using Neural Nets trained on MovieLens dataset of their users, movies and 
 users' ratings of the movies.
 
