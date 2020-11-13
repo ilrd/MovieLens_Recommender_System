@@ -8,7 +8,7 @@ movies and users' ratings of the movies.
 * MySQL database for storing data
 * Working with data - Pandas, SQL
 * Visualization - matplotlib
-* Modeling - keras, embedding, sklearn
+* Modeling - keras, sklearn
 
 ## Result
 The model makes movie recommendations to users with 0.6 mean absolute error, which is pretty good for predicting 
