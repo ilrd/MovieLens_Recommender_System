@@ -13,3 +13,5 @@ movies and users' ratings of the movies.
 ## Result
 The model makes movie recommendations to users with 0.6 mean absolute error, which is pretty good for predicting 
 whether a person will like it overall or not 
+
+<img src="./img/mysql_data.png">
